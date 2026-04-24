@@ -9,9 +9,52 @@ sources:
      - name: sales
        identifier: raw_gz_sales
        description: "Satış verileri"
+       loaded_at_field: "CAST(date_date AS TIMESTAMP)"
+       freshness:
+         warn_after: {count: 90, period: day}
+       columns:
+         - name: date_date
+           description: date of purchase
+         - name : orders_id
+           description: order's id unique for each order
+         - name : products_id
+           description: product's id unique for each product
+         - name : revenue
+           description: revenue from the sale
+         - name : quantity
+           description: quantity sold
+       tests:
+         - unique:
+             column_name: "(orders_id || '-' || products_id)"
+       
+
      - name: product
        identifier: raw_gz_product
        description: "Ürün kataloğu verileri"
+       columns:
+         - name : products_id
+           description: product's id unique for each product
+           tests:
+             - unique
+             - not_null
+         - name : purchase_price
+           description: product's cost
+       
+         
      - name: ship
        identifier: raw_gz_ship
        description: "Gönderim/Lojistik verileri"
+       columns:
+         - name : orders_id
+           description: order's id unique for each order
+           tests:
+             - unique
+             - not_null
+         - name : shipping_fee
+           description: order's ship cost for customer
+         - name : logcost
+           description: order's log cost
+         - name : ship_cost
+           description: order's ship cost
+           
+          
