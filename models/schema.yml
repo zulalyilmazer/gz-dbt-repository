@@ -1,0 +1,17 @@
+ # schema.yml
+version: 2
+
+sources:
+ - name: raw  # BigQuery'deki Dataset adı
+   schema: gz_raw_data
+   description: "Greenweez ham verileri"
+   tables:
+     - name: sales
+       identifier: raw_gz_sales
+       description: "Satış verileri"
+     - name: product
+       identifier: raw_gz_product
+       description: "Ürün kataloğu verileri"
+     - name: ship
+       identifier: raw_gz_ship
+       description: "Gönderim/Lojistik verileri"
