@@ -18,6 +18,8 @@ SELECT
     , 2) AS operational_margin,
     o.revenue,
     o.margin,
+    o.purchase_cost,
+    o.quantity,
     s.shipping_fee,
     s.logcost,
     s.ship_cost
