@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: stg_cc_parcel
+    description: "Circle kargo ana staging tablosu"
+    columns:
+      - name: parcel_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_cc_parcel_products
+    description: "Circle kargo ürün detay staging tablosu"
